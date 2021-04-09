@@ -1,0 +1,40 @@
+body{
+    overflow-y: auto;
+    overflow-x: hidden;
+    
+}
+.center{
+    text-align: center;
+}
+#id_username{
+    width: 90%;
+}
+#id_password1{
+    width: 90%;
+}
+#id_password2{
+    width: 90%;
+}
+.size_img{
+    height: 8rem;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 8rem;
+}
+.wrap-2{
+    position:fixed;
+    z-index:-30;
+    top:0;
+    left:0;
+    overflow:hidden;
+    height:100vh;
+    width:100vw;
+    margin:auto;
+    background: rgb(157,52,52);
+    background: radial-gradient(circle, rgba(157,52,52,1) 13%, rgba(14,14,14,1) 88%);
+}
+canvas{
+    width:100%;
+    height:100%;
+}

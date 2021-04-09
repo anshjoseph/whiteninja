@@ -1,0 +1,22 @@
+.form_2{
+    /* border: 1px solid; */
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    /* padding: 10%; */
+    /* width: fit-content; */
+    padding: 2%;
+    width: 70%;
+    margin-top: 20px;
+}
+.inp{
+    width: 100%;
+}
+.size_img{
+    height: 8rem;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 8rem;
+}

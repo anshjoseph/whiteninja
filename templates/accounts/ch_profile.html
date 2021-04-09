@@ -1,0 +1,95 @@
+{% load static %}
+<!DOCTYPE html>
+
+<head>
+    <title>change_profile</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="stylesheet" type="text/css" href="{% static './global/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static './accounts/css/ch_pro.css' %}">
+    <script src="{% static './global/js/bootstrap.min.js' %}"></script>
+
+</head>
+
+<body>
+    <div class="container">
+    <spam style="font-weight: bold;font-size: larger;">Profile data entry</spam>
+    <form method="POST" class="form">
+        {% csrf_token %}
+        {% if data.call_of_duty_ch_box == False %}
+        <div class="space">
+            <div class="card mr-5">
+                <div class="card-header">
+                    <label>cod</label>
+                    <input type="checkbox" value="1" name="cod_ch" id="cod" onclick="cod_chbox()">
+                </div>
+                <div class="card-body">
+                    <blockquote class="blockquote mb-2">
+                        <div id="cod_write">
+                            <label>Username</label>
+                            <br>
+                            <input type="text" placeholder="username" name="cod_us" class="input_feild">
+                            <br>
+                            <label>User ID</label>
+                            <br>
+                            <input type="text" placeholder="id" name="cod_id" class="input_feild">
+                        </div>
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        {% if data.free_fire_ch_box == False %}
+        <div class="space">
+            <div class="card mr-5">
+                <div class="card-header">
+                    <label>freefire</label>
+                    <input type="checkbox" value="1" name="ff_ch" id="ff" onclick="ff_chbox()">
+                </div>
+                <div class="card-body">
+                    <blockquote class="blockquote mb-2">
+                        <div id="ff_write">
+                            <label>Username</label>
+                            <br>
+                            <input type="text" placeholder="username" name="ff_us" class="input_feild">
+                            <br>
+                            <label>User ID</label>
+                            <br>
+                            <input type="text" placeholder="id" name="ff_id" class="input_feild">
+                        </div>
+                    </blockquote>
+                </div>
+            </div>
+            {% endif %}
+            {% if data.pubg_ch_box == False %}
+            <div class="space">
+                <div class="card mr-5">
+                    <div class="card-header">
+                        <label>pubg</label>
+                        <input type="checkbox" value="1" name="pg_ch" id="pg" onclick="pg_chbox()">
+                    </div>
+                    <div class="card-body">
+                        <blockquote class="blockquote mb-2">
+                            <div id="pg_write">
+                                <label>Username</label>
+                                <br>
+                                <input type="text" placeholder="username" name="pg_us" class="input_feild">
+                                <br>
+                                <label>User ID</label>
+                                <br>
+                                <input type="text" placeholder="id" name="pg_id" class="input_feild">
+                            </div>
+                        </blockquote>
+                    </div>
+                </div>
+                {% endif %}
+                <br>
+                <br>
+                {% if data.pubg_ch_box == False or data.free_fire_ch_box == False or data.call_of_duty_ch_box == False%}
+                <input type="submit" value="change" id="sub_btn">
+                {% endif %}
+    </form>
+</div>
+    <script src="{% static './accounts/js/ch_pro.js' %}"></script>
+</body>
+
+</html>

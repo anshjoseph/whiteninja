@@ -1,0 +1,48 @@
+{% extends 'admin/base.html' %}
+{% load static %}
+
+
+
+{% block branding %}
+<h1 id="head">
+    <span><img src="{% static './accounts/img/wh.svg' %}" alt="not found" class="size_img" style="height:3rem;width:3rem;"/></span>
+    WhiteNinjaesp
+</h1>
+{% endblock  %}  
+
+{% comment %} {% block nav-global %}
+<a href="{% url 'data' %}">get compeatin list</a>
+{% endblock %} {% endcomment %}
+
+{% block usertools %}
+        {% if has_permission %}
+        <div id="user-tools">
+            {% block welcome-msg %}
+                Welcome,
+                <strong>{% firstof user.get_short_name user.get_username %}</strong>.
+                
+            {% endblock %}
+            {% block userlinks %}
+                {% if site_url %}
+                    <a href="{{ site_url }}">View site</a> /
+                {% endif %}
+                {% if user.is_active and user.is_staff %}
+                    {% url 'django-admindocs-docroot' as docsroot %}
+                    {% if docsroot %}
+                        <a href="{{ docsroot }}">Documentation</a> /
+                    {% endif %}
+                {% endif %}
+                {% if user.has_usable_password %}
+                <a href="{% url 'admin:password_change' %}">Change password</a> /
+                {% endif %}
+                <a href="{% url 'data' %}">get compeatin list</a>/
+                <a href="{% url 'admin:logout' %}">Log out</a>
+            {% endblock %}
+        </div>
+        {% endif %}
+        {% endblock %}
+
+
+{% block extrastyle %}
+<link rel="stylesheet" href="{% static './admin/admin_style.css' %}">
+{% endblock  %}

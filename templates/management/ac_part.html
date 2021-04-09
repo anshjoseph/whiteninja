@@ -1,0 +1,76 @@
+{% load static %}
+<html>
+
+<head>
+    <title>particepate</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="stylesheet" type="text/css" href="{% static './global/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static './management/css/ac_part.css' %}">
+    <script src="{% static './global/js/bootstrap.min.js' %}"></script>
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="form_2">
+            <span><img src="{% static './accounts/img/wh.svg' %}" alt="not found" class="size_img" /></span>
+            <form action="{% url 'part' %}" method="POST" class="form">
+                {% csrf_token %}
+                <input type="text" value="{{tt_name}}" name="to_na" style="display: none;">
+                <div class="row mb-3">
+                    <label> Team name </label>
+                    <div class="col-sm-10">
+                        <input type="text" name="tt_name" placeholder="Team name">
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label>discord id</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="dis_id" placeholder="Leader discord id">
+                    </div>
+                </div>
+                {% if tt_data.solo %}
+                <div class="row mb-3">
+                    <label>leader</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="mem1" placeholder="leader">
+                    </div>
+                </div>
+                {% endif %}
+                {% if tt_data.team %}
+                <div class="row mb-3">
+                    <label>leader</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="mem1" placeholder="leader">
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label>member</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="mem2" placeholder="member">
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label>member</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="mem3" placeholder="member">
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label>member</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="mem4" placeholder="member">
+                    </div>
+                </div>
+                {% endif %}
+                <button type="submit" class="btn btn-primary mt-5">resister</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

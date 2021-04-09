@@ -1,0 +1,46 @@
+{% load static %}
+<html>
+
+<head>
+    <title>particepate</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="stylesheet" type="text/css" href="{% static './global/css/bootstrap.min.css' %}">
+    <script src="{% static './global/js/bootstrap.min.js' %}"></script>
+</head>
+
+<body>
+    <b><span style="font-size: 40;align-items: center;display: flex;flex-flow: column;margin-top: 10px;">Tonament
+            list</span></b>
+    {% for tt in tt_list %}
+    <div class="card mr-5 mt-5" onclick="submit_req('{{tt.tonament_name}}')">
+        <div class="card-header">
+            competation
+        </div>
+        <div class="card-body">
+            <blockquote class="blockquote mb-2">
+
+                {% if user.free_fire_ch_box == True and tt.free_fire == True %}
+                <input type="hidden" value="{{tt.tonament_name}}" id="tt_n">
+                {{tt.tonament_name}}
+                {% endif %}
+
+                {% if user.pubg_ch_box == True and tt.pubg == True %}
+                <input type="hidden" value="{{tt.tonament_name}}" id="tt_n">
+                {{tt.tonament_name}}:-pubg
+                {% endif %}
+
+            </blockquote>
+        </div>
+    </div>
+    {% endfor %}
+    <form action={% url 'data' %} method="POST" id="form">
+        {% csrf_token %}
+        <input name="tt_name" type="hidden" id="inp_tt">
+        <form>
+            <script src="{% static './management/js/sel_part.js' %}">
+
+
+            </script>
+</body>
+
+</html>

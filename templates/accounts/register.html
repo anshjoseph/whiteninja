@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+
+<head>
+    <title>Registrations</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="stylesheet" type="text/css" href="{% static './accounts/css/reg.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static './global/css/bootstrap.min.css' %}">
+    <script src="{% static './global/js/bootstrap.min.js' %}"></script>
+    <script src="{% static './global/js/jquery-3.6.0.min.js' %}"></script>
+
+</head>
+
+<body>
+    <div class="wrap-2"><canvas id="liquid"></canvas></div>
+    <div class="container">
+        <span><img src="{% static './accounts/img/wh.svg' %}" alt="not found" class="size_img" /></span>
+        <form method="POST" class="form mt-5" style="margin-left: 2rem;z-index: 50;">
+            {% csrf_token %}
+            {% for field in form %}
+            <p>
+                <span class="col-form-label" style="color:#fff;">{{ field.label_tag }}</span>
+                <br>
+                <span style="width: 80%;" class="center">{{ field }}</span>
+                {% if field.help_text %}
+                <br>
+                <small style="color: #fff;margin-top: 20px;">{{ field.help_text }}</small>
+                {% endif %}
+                {% for error in field.errors %}
+            <p style="color: red">{{ error }}</p>
+            {% endfor %}
+            </p>
+            {% endfor %}
+            <div class="center">
+                <input type="submit" class="btn btn-primary mt-5" style="margin-bottom: 0.8rem;" value="register">
+            </div>
+        </form>
+    </div>
+    <script src="{% static './accounts/js/reg.js' %}"></script>
+</body>
+
+</html>

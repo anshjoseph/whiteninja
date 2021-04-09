@@ -1,0 +1,37 @@
+                                               tonament name: {{to_name}}
+
+                                                <br>
+                                                <br>
+                                                <br>
+
+
+
+{% if data %}
+    {% for d in data %}
+         
+        slot:{{d.slot}}<---->
+        team_name:{{d.team_name}}<br>
+ 
+        leader_name:{{d.le_name}}<br>
+        leader_id:{{d.leader}}<br>
+        member1_name:{{d.m1_name}}<br>
+        menber1_id:{{d.mem1}}<br>
+
+
+        {% if d.m2_name %}
+        member2_name:{{d.m2_name}}<br>
+        menber2_id:{{d.mem2}}<br>
+        {% endif %}
+
+        {% if d.m3_name %}
+        member3_name:{{d.m3_name}}<br>
+        menber3_id:{{d.mem3}}<br>
+        {% endif %}
+
+        {% if d.m4_name %}
+        member4_name:{{d.m4_name}}<br>
+        menber4_id:{{d.mem4}}<br>
+        {% endif %}
+        <br>
+    {% endfor %}
+{% endif %}

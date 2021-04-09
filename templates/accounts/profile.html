@@ -1,0 +1,136 @@
+{% load static %}
+<html>
+
+<head>
+  <title>{{user.user_name}}</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" type="text/css" href="{% static './global/css/bootstrap.min.css' %}">
+  <script src="{% static './global/js/bootstrap.min.js' %}"></script>
+  <link rel="stylesheet" type="text/css" href="{% static './accounts/css/pro.css' %}">
+</head>
+
+<body>
+  <nav class="navbar navbar-dark bg-primary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#"><img src="{% static './accounts/img/wh.svg' %}" alt="not found"
+          style="height:2rem;width:2rem;" />Welcome {{user.user_name}}</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'change_profile' %}"><img
+                src="{% static './accounts/img/pro.svg' %}" alt="not found" style="height:2rem;width:2rem;" />add
+              information profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="{% url 'particepant' %}"><img
+                src="{% static './accounts/img/con_ga.svg' %}" alt="not found"
+                style="height:2rem;width:2rem;" />competation</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="{% url 'logout' %}"><img src="{% static './accounts/img/log.svg' %}"
+                alt="not found" style="height:2rem;width:2rem;" />logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="mobile_des">
+    {% if user.free_fire_ch_box %}
+    <a href="{% url 'ch_ff' %}" class="alink">
+      <div class="card top_botton_s" style="width: 18rem;">
+        <img src="{% static './accounts/img/fp.jpg' %}" class="card-img-top" style="height:200px" alt="not found">
+        <div class="card-body">
+          <p class="card-text">Username: {{user.free_fire_us_na}}</p>
+          <p class="card-text">User id: {{user.free_fire_us_id}}</p>
+        </div>
+    </a>
+  </div>
+  {% endif %}
+  {% if user.pubg_ch_box%}
+  <a href="{% url 'ch_pg' %}" class="alink">
+    <div class="card top_botton_s" style="width: 18rem;">
+      <img src="{% static './accounts/img/pp.jpg' %}" class="card-img-top" style="height:200px" alt="not found">
+      <div class="card-body">
+        <p class="card-text">Username: {{user.pubg_us_na}}</p>
+        <p class="card-text">User id: {{user.pubg_us_id}}</p>
+      </div>
+    </div>
+  </a>
+  {% endif %}
+  </div>
+  <div class="ne_co">
+    <div style="width:90%;margin-left: auto;margin-right: auto;">
+      {% for comp in comps %}
+      <div class="card mr-5">
+        <div class="card-header">
+          competation
+        </div>
+        <div class="card-body">
+          <blockquote class="blockquote mb-2">
+            team name:{{comp.data.team_name}}
+            <br>
+            team leader:{{comp.data.le_name}}
+            <br>
+            {% if comp.data.m1_name %}
+            member:{{comp.data.m1_name}}
+            <br>
+            {% endif %}
+            {% if comp.data.m2_name %}
+            member:{{comp.data.m2_name}}
+            <br>
+            {% endif %}
+            {% if comp.data.m3_name %}
+            member:{{comp.data.m3_name}}
+            <br>
+            {% endif %}
+            leader_contact: {{comp.data.leader_dicord_id}}
+            <br>
+            {% if comp.room_id %}
+            <br>
+            room_id:{{comp.room_id.room_id}}
+            <br>
+            room_password:{{comp.room_id.room_pass}}
+            {% else %}
+            <br>
+            <p> comming soon.... <br>at {{comp.time}} </p>
+            {% endif %}
+
+
+            <form action="{% url 'le_tm' %}" method="POST">
+              {% csrf_token %}
+              <input type="hidden" value="{{comp.data.name_tt}}" name="tt_name">
+              <input type="hidden" value="{{comp.data.slot}}" name="slot">
+              <br>
+              <button type="submit" class="btn btn-danger mt-1">leave</button>
+              </from>
+          </blockquote>
+        </div>
+      </div>
+
+      <br>
+      {% endfor %}
+
+    </div>
+    {% for n in news %}
+    <div class="cen">
+      <div class="card mr-5">
+        <div class="card-header">
+          News
+        </div>
+        <div class="card-body">
+          <blockquote class="blockquote mb-2">
+            <p>{{n}}</p>
+          </blockquote>
+        </div>
+      </div>
+    </div>
+    <br>
+    {% endfor %}
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+{% load static %}
+<html>
+
+<head>
+    <title>
+        {{error.tittle}}
+    </title>
+    <link rel="stylesheet" type="text/css" href="{% static './global/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static './management/css/ac_part.css' %}">
+    <style>
+        .center{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            font-size: 70;
+        }
+    </style>
+</head>
+
+<body>
+    <p class="center">
+        <b>{{error.message}}</b>
+    </p>
+</body>
+
+</html>

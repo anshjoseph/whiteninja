@@ -1,0 +1,50 @@
+{% load static %}
+<html>
+
+<head>
+    <title>change_us_id</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="stylesheet" type="text/css" href="{% static './global/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static './accounts/css/pg_ch.css' %}">
+    <script src="{% static './global/js/bootstrap.min.js' %}"></script>
+</head>
+
+<body>
+    {% comment %} <form method="POST">
+        {% csrf_token %}
+        <input type="text" placeholder="username" value="{{data.free_fire_us_na}}" name="ff_us">
+        <input type="text" placeholder="id" value="{{data.free_fire_us_id}}" name="ff_id">
+        <br>
+        delete<input type="checkbox" value="1" name="del">
+        <br>
+        <input type="submit" value="change">
+    </form> {% endcomment %}
+    <div class="container">
+        <div class="form_2">
+            <span><img src="{% static './accounts/img/wh.svg' %}" alt="not found" class="size_img" /></span>
+            <form method="POST" class="form">
+                {% csrf_token %}
+                <div class="row mb-3">
+                    <label> username </label>
+                    <div class="col-sm-10">
+                        <input type="text" class="inp" placeholder="username" value="{{data.free_fire_us_na}}" name="ff_us">
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label>uid</label>
+                    <div class="col-sm-10">
+                        <input type="text" placeholder="id" class="inp" value="{{data.free_fire_us_id}}" name="ff_id">
+                    </div>
+                </div>
+
+                delete<input type="checkbox" value="1"  style="width: 20px;" name="del">
+                <br>
+                    <!-- <input type="submit" class="btn btn-primary mt-5 inp_i1" value="change"> -->
+                <button type="submit" class="btn btn-primary mt-5">Change</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

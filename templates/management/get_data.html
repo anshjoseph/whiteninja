@@ -1,0 +1,83 @@
+{% load static %}
+<html>
+
+<head>
+    <title>Data</title>
+    <link rel="stylesheet" type="text/css" href="{% static './global/css/bootstrap.min.css' %}">
+    {% comment %} <link rel="stylesheet" type="text/css" href="{% static './managemnet/css/get_data.css' %}"> {% endcomment %}
+    <script src="{% static './global/js/bootstrap.min.js' %}"></script>
+    <style>
+    .inp{
+        width: 90%;
+        padding: 17px;
+        }
+    .com{
+        margin-top: 4rem;
+        display: flex;
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <span style="font-size: 50px;"><img src="{% static './accounts/img/wh.svg' %}" alt="not found" class="size_img" style="height:8rem;width:8rem;"/> Particepant list</span>
+        <div>
+            <form action="{% url 'data'%}" method="POST" class="form com">
+                {% csrf_token %}
+                <input type="search" name="tt_name" class="inp" placeholder="Write tonament name">
+                <br>
+                <input type="submit" class="btn btn-primary" style="width: 10%;margin-left: 10px;" value="go">
+            </form>
+        </div>
+
+        <!--"__________________________________________________________________"-->
+        <div>
+            {% if data %}
+            {% for d in data %}
+            <div class="card mr-5">
+                <div class="card-header">
+                    slot:{{d.slot}}
+                    team_name:{{d.team_name}}<br>
+                </div>
+                <div class="card-body">
+                    <blockquote class="blockquote mb-2">
+                        leader_name:{{d.le_name}}<br>
+                        leader_id:{{d.leader}}<br>
+                        member1_name:{{d.m1_name}}<br>
+                        menber1_id:{{d.mem1}}<br>
+
+
+                        {% if d.m2_name %}
+                        member2_name:{{d.m2_name}}<br>
+                        menber2_id:{{d.mem2}}<br>
+                        {% endif %}
+
+                        {% if d.m3_name %}
+                        member3_name:{{d.m3_name}}<br>
+                        menber3_id:{{d.mem3}}<br>
+                        {% endif %}
+
+                        {% if d.m4_name %}
+                        member4_name:{{d.m4_name}}<br>
+                        menber4_id:{{d.mem4}}<br>
+                        {% endif %}
+                        leader_discord_id:{{d.leader_dicord_id}}
+                    </blockquote>
+                </div>
+            </div>
+            <br>
+            {% endfor %}
+
+
+        <form action="{% url 'doc'%}" method="POST">
+            {% csrf_token %}
+            <input type="hidden" value="{{to_name}}" name="to_name">
+            <input type="submit" class="btn btn-primary" style="width: 10%;margin-left: 10px;" value="document">
+        </form>
+        {% else %}
+        <p style="font-size: 50px;position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);color: gray;font-weight: 450;" class="mt-5">Data Not found</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+
+</html>

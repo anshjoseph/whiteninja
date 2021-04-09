@@ -1,0 +1,40 @@
+body{
+    background-color: rgb(2, 3, 17);
+}
+.top_botton_s{
+    margin: 20px;
+    border: 1px solid;
+}
+.space{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.mobile_des{
+    display: flex;
+}
+.ne_co{
+    width: 95%;
+    display: unset;
+}
+@media screen and (orientation:portrait){
+    .mobile_des{
+        display: block;
+        text-align: center;
+        margin-top: 40px;
+        margin-left: auto;
+        margin-right: auto;
+
+    }
+}
+.cen{
+    text-align: center;
+    width: 80%;
+    margin-top: 40px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.alink{
+    text-decoration: none;
+    text-decoration-color: #000;
+    color: black;
+}
