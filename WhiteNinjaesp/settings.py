@@ -77,15 +77,15 @@ WSGI_APPLICATION = 'WhiteNinjaesp.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': config("ENGINE"),
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-# DATABASES = {}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': config("ENGINE"),
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+DATABASES = {}
 DATABASES['default'] = dj_database_url.config(conn_max_age=600)
-DATABASES = config('DATABASES',cast=dict)
+DATABASES = config('DATABASE_URL',cast=dict)
 
 
 # Password validation
