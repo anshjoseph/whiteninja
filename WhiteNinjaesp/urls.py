@@ -30,6 +30,6 @@ urlpatterns = [
     path("mem_data/",man_views.data_part,name="data"),
     path("parts/",man_views.ac_part,name="part"),
     path("del/",acc_views.leave_team,name="le_tm"),
-    path("get_data/",man_views.get_data,name="data"),
+    path("get_data/",man_views.get_data,name="data1"),
     path("diojhsk/",man_views.get_doc,name="doc")
 ]
