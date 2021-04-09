@@ -21,7 +21,7 @@
     <div class="container">
         <span style="font-size: 50px;"><img src="{% static './accounts/img/wh.svg' %}" alt="not found" class="size_img" style="height:8rem;width:8rem;"/> Particepant list</span>
         <div>
-            <form action="{% url 'data'%}" method="POST" class="form com">
+            <form action="{% url 'data1'%}" method="POST" class="form com">
                 {% csrf_token %}
                 <input type="search" name="tt_name" class="inp" placeholder="Write tonament name">
                 <br>
