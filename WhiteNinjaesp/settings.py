@@ -12,8 +12,8 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 from decouple import config
-# import dj_database_url
-# import django_heroku
+import dj_database_url
+import django_heroku
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -84,8 +84,8 @@ DATABASES = {
     }
 }
 # DATABASES = {}
-# DATABASES['default'] = dj_database_url.config(conn_max_age=600)
-# DATABASES = config('DATABASES',cast=dict)
+DATABASES['default'] = dj_database_url.config(conn_max_age=600)
+DATABASES = config('DATABASES',cast=dict)
 
 
 # Password validation
@@ -129,7 +129,7 @@ STATICFILES_DIRS=[
     BASE_DIR / "statics"
 ]
 # # This should already be in your settings.py
-# django_heroku.settings(locals())
+django_heroku.settings(locals())
 # # This is new
 # options = DATABASES['default'].get('OPTIONS', {})
 # options.pop('sslmode', None)
