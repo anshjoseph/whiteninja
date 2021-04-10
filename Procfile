@@ -1,1 +1,1 @@
-web: gunicorn WhiteNinjaesp.wsgi
+web: gunicorn WhiteNinjaesp.wsgi --log-file - 
